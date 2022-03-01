@@ -1,15 +1,5 @@
-def print_sum(a,b):
-    """add function
+import uts_ad
 
-    Args:
-        a (int): a number
-        b (int): a number
 
-    Returns:
-        int:  sum (a,a)
-    """
-    return a + b
 
-myprint = print_sum(4,6)
-print(myprint)
-
+df = uts_ad.residual_outlier_detection(df)

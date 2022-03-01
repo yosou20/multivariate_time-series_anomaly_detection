@@ -27,6 +27,7 @@ def residual_outlier_detection(series, window_size=15, threshold=2.5):
 
 
 def mean_std_residual_df(df, window=20, threshold=3.5):
+    
     '''
 
     @param df:
