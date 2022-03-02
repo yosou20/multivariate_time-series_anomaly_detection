@@ -6,6 +6,15 @@ import time
 import itertools
 
 
+import cufflinks as cf
+import plotly.graph_objs as go
+import plotly.offline as py
+import plotly.express as px
+from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
+init_notebook_mode(connected= True)
+cf.go_offline()
+
+
 def residual_outlier_detection(series, window_size=15, threshold=2.5):
     """Time-series dataset as input parameter
 
@@ -64,3 +73,14 @@ def mean_std_residual_df(df, window=20, threshold=3.5):
     # print(outlier_max)
 
     return df, outlier_df_v1
+
+def plot_anomaly_data22(series, outlier_df):
+    fig = go.Figure()
+    # Add outlier_df trace
+    fig.add_trace(go.Scattergl(x = outlier_df.index, y = outlier_df,
+                    mode='markers',
+                    name='Outlier Points'))
+    #Add df trace
+    fig.add_trace(go.Scattergl(x = series.index, y = series, mode = 'lines',
+                    name='Actual Data'))
+    fig.show()
