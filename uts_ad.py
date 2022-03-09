@@ -84,3 +84,23 @@ def plot_anomaly_data22(series, outlier_df):
     fig.add_trace(go.Scattergl(x = series.index, y = series, mode = 'lines',
                     name='Actual Data'))
     fig.show()
+    
+
+def detect_high_variance_points(series, quantile = 0.9995, window = 5):
+    """The method or function takes a time series data, rolling window and a threshold value and return a boolean
+    whether some data points are considered as poor data or outlier.
+    Args:
+        series (_type_): _description_
+        quantile (float, optional): _description_. Defaults to 0.9995.
+        window (int, optional): _description_. Defaults to 5.
+
+    Returns:
+        _type_: boolean  whether  the data is poor /outlier or not.
+    """  
+    
+    series_stds = series.rolling(window).var()
+    series_stds.fillna(method='bfill', inplace=True)
+    threshold = series_stds.quantile(quantile)
+    poor_d = series_stds- series > threshold
+       
+    return poor_d  # series[poor_d]
