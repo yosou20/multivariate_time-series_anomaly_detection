@@ -1,0 +1,6 @@
+{
+    "editor.fontSize": 12,
+    "files.exclude": {
+        "\"files.exclude\": { \"**/__pycache__\": true }": true
+    }
+}
