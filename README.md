@@ -1,1 +1,1 @@
-## multivariate_time-series_anomaly_detection
+## Multivariate time series anomaly detection
